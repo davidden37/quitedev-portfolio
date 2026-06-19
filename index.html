@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>quitedev.my.id — Web3 Operator</title>
+  <meta name="description" content="Web3 airdrop operator · multi-wallet ops · auditable by design." />
+  <meta name="theme-color" content="#161310" />
+  <meta name="author" content="quitedev" />
+  <link rel="canonical" href="https://quitedev.my.id/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="quitedev.my.id" />
+  <meta property="og:title" content="quietdev. — Web3, by hand. Quietly." />
+  <meta property="og:description" content="Web3 airdrop operator · multi-wallet ops · auditable by design." />
+  <meta property="og:url" content="https://quitedev.my.id/" />
+  <meta property="og:image" content="https://quitedev.my.id/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="quitedev.my.id — Web3, by hand. Quietly." />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="quietdev. — Web3, by hand. Quietly." />
+  <meta name="twitter:description" content="Web3 airdrop operator · multi-wallet ops · auditable by design." />
+  <meta name="twitter:image" content="https://quitedev.my.id/og.png" />
+  <meta name="twitter:image:alt" content="quitedev.my.id — Web3, by hand. Quietly." />
+
+  <!-- Privacy-friendly analytics via GoatCounter (no cookies, no PII, GDPR-safe).
+       To enable:
+       1. Sign up at https://gc.zgo.at/signup (free, no card, email only)
+       2. Add site "quitedev.my.id"
+       3. Replace YOUR-CODE below with the code GoatCounter shows you
+       4. Remove the surrounding <!-- --> comment markers -->
+  <!--
+  <script data-goatcounter="https://YOUR-CODE.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #161310;
+      --bg-soft: #1d1915;
+      --bg-card: #221e1a;
+      --ink: #f0e8d8;
+      --ink-soft: #b8aa94;
+      --ink-dim: #6e6452;
+      --rule: #2a2520;
+      --brass: #c9a35e;
+      --brass-light: #d8b56a;
+      --brass-dim: #8a7548;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s, color 0.2s; }
+    a:hover { border-bottom-color: var(--brass); color: var(--brass-light); }
+
+    .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.05em; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+    .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+    .topbar {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar-brand { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+    .topbar-brand em { color: var(--brass); font-style: italic; }
+    .topbar-nav { display: flex; gap: 32px; }
+    .topbar-nav a { font-size: 14px; color: var(--ink-soft); border-bottom: none; }
+    .topbar-nav a:hover { color: var(--brass); }
+    .topbar-nav .num { color: var(--ink-dim); font-size: 11px; margin-right: 6px; }
+
+    .hero {
+      padding: 120px 0 100px;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::after { content: ''; flex: 0 0 60px; height: 1px; background: var(--brass); }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.98;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      margin: 0 0 32px;
+      color: var(--ink);
+    }
+    .hero-title em { font-style: italic; color: var(--brass); font-weight: 300; }
+
+    .hero-sub {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 600px;
+      font-weight: 300;
+    }
+    .hero-sub em { color: var(--brass); font-style: italic; }
+
+    .hero-services {
+      margin-top: 36px;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.28);
+      border-left: 2px solid var(--brass);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+      max-width: 760px;
+      word-break: break-word;
+    }
+    .hero-services .svc-comment { color: var(--brass); }
+    .hero-services .svc-dot { color: var(--ink-dim); margin: 0 6px; }
+    .hero-services .svc-cyan { color: #8ec5e0; }
+    .hero-services .svc-white { color: var(--ink); }
+
+    .hero-meta {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .hero-meta-item .num {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .hero-meta-item .num em { color: var(--brass); font-style: italic; }
+    .hero-meta-item .lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      margin-top: 4px;
+    }
+
+    section { padding: 100px 0; border-top: 1px solid var(--rule); }
+    .sec-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 24px;
+    }
+    .sec-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      margin: 0 0 56px;
+      max-width: 720px;
+    }
+    .sec-title em { font-style: italic; color: var(--brass); font-weight: 300; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--bg-card);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 120px;
+      color: var(--brass);
+      font-style: italic;
+      font-weight: 300;
+    }
+    .about-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0 0 24px;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+    .about-text p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .about-text p em {
+      color: var(--brass);
+      font-style: italic;
+    }
+
+    .work-list { list-style: none; padding: 0; margin: 0; }
+    .work-item {
+      display: grid;
+      grid-template-columns: 80px 1fr 180px 120px;
+      gap: 32px;
+      align-items: baseline;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.2s, padding 0.2s;
+    }
+    .work-item:first-child { border-top: 1px solid var(--rule); }
+    .work-item:hover { background: var(--bg-soft); padding-left: 16px; padding-right: 16px; }
+    .work-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--ink-dim);
+    }
+    .work-body h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 400;
+      margin: 0 0 6px;
+      letter-spacing: -0.015em;
+    }
+    .work-body p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin: 0;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .work-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+    }
+    .work-year {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      color: var(--ink-dim);
+      font-style: italic;
+      text-align: right;
+    }
+
+    .stack-list { list-style: none; padding: 0; margin: 0; }
+    .stack-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .stack-item:first-child { border-top: 1px solid var(--rule); }
+    .stack-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--brass);
+      font-weight: 400;
+    }
+    .stack-detail {
+      font-size: 15px;
+      color: var(--ink-soft);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .reach-list { list-style: none; padding: 0; margin: 0; }
+    .reach-item {
+      border-bottom: 1px solid var(--rule);
+    }
+    .reach-item:first-child { border-top: 1px solid var(--rule); }
+    .reach-link, .reach-wallet {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      padding: 22px 12px;
+      margin: 0 -12px;
+      text-decoration: none;
+      border-bottom: none;
+      color: inherit;
+      transition: background 0.25s, color 0.25s;
+    }
+    .reach-link:hover, .reach-wallet:hover { background: var(--bg-soft); }
+    .reach-link:hover .reach-icon,
+    .reach-wallet:hover .reach-icon { color: var(--brass); }
+    .reach-link:hover .reach-arrow {
+      opacity: 1;
+      transform: translateX(0);
+      color: var(--brass);
+    }
+    .reach-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      color: var(--ink-soft);
+      transition: color 0.25s;
+    }
+    .reach-icon svg { width: 24px; height: 24px; }
+    .reach-meta { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .reach-meta .reach-label {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .reach-meta .reach-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .reach-arrow {
+      font-size: 22px;
+      color: var(--ink-soft);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.25s, transform 0.25s, color 0.25s;
+    }
+    .copy-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .copy-btn:hover { border-color: var(--brass); color: var(--brass); }
+    .copy-btn.copied { color: var(--brass); border-color: var(--brass); }
+
+    .closing {
+      padding: 100px 0 80px;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+    }
+    .closing-quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.3;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+    }
+    .closing-quote::before { content: '“'; color: var(--brass); margin-right: 4px; }
+    .closing-quote::after { content: '”'; color: var(--brass); margin-left: 4px; }
+    .closing-attr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-dim);
+      letter-spacing: 0.05em;
+    }
+    .footer-meta em { color: var(--brass); font-style: italic; }
+
+    @media (max-width: 768px) {
+      .container, .container-narrow { padding: 0 24px; }
+      .topbar { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .topbar-nav { gap: 20px; flex-wrap: wrap; }
+      .hero { padding: 64px 0 56px; }
+      .hero-meta { grid-template-columns: 1fr; gap: 24px; }
+      section { padding: 64px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-photo { aspect-ratio: 1/1; }
+      .work-item { grid-template-columns: 1fr; gap: 8px; }
+      .work-year { text-align: left; }
+      .stack-item { grid-template-columns: 1fr; gap: 8px; }
+      .reach-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="topbar-brand">quitedev<em>.my.id</em></div>
+        <nav class="topbar-nav">
+          <a href="#about"><span class="num">01</span>About</a>
+          <a href="#work"><span class="num">02</span>Work</a>
+          <a href="#stack"><span class="num">03</span>Stack</a>
+          <a href="#reach"><span class="num">04</span>Reach</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" style="border-top: none; padding-top: 0;">
+    <div class="container">
+      <div class="hero-eyebrow">An operator's portfolio</div>
+      <h1 class="hero-title">quietdev.<br />Web3, by hand.<br /><em>Quietly.</em></h1>
+      <p class="hero-sub">
+        Airdrop farming, multi-wallet orchestration, on-chain ops. Built on Termux + proot-debian. Every transaction is sim-then-send. Every secret is encrypted. Every action is logged — because <em>auditable</em> is the only honest default.
+      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="num"><em>4</em></div>
+          <div class="lbl">Wallets managed</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">22<em>+</em></div>
+          <div class="lbl">Agent skills installed</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="num">5</div>
+          <div class="lbl">Hard stops · enforced</div>
+        </div>
+      </div>
+
+      <div class="hero-services">
+        <span class="svc-comment"># open to:</span> <span class="svc-cyan">airdrop collab</span><span class="svc-dot">·</span><span class="svc-cyan">security audit</span><span class="svc-dot">·</span><span class="svc-cyan">custom agent setup</span><span class="svc-dot">·</span><span class="svc-white">web3 ops retainer</span><span class="svc-dot">·</span><span class="svc-white">MEV-safe infra consulting</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="sec-eyebrow">01 — About</div>
+      <h2 class="sec-title">Operator, not <em>influencer</em>.</h2>
+
+      <div class="about-grid">
+        <div class="about-photo reveal">b</div>
+        <div class="about-text reveal">
+          <p>An operator running Web3 airdrop operations — multi-wallet orchestration, on-chain execution, automation that doesn't break when the network gets hostile. Stack: <strong>Termux on Android, with a proot-debian</strong> under the hood. Edge operator, not cloud native.</p>
+          <p>What I optimise for: <em>auditable by default</em>. Sim-then-send on every tx. Encrypted vault for every secret. Audit log for every action that touches funds. I don't optimise for speed theatre — I optimise for <strong>being able to explain what happened, three months later, line by line</strong>.</p>
+          <p>What I don't do: drainers, third-party seed handling, fraud infrastructure. Non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="sec-eyebrow">02 — Selected work</div>
+      <h2 class="sec-title">Recent <em>builds</em>.</h2>
+
+      <ul class="work-list">
+
+        <li class="work-item reveal">
+          <div class="work-num">//01</div>
+          <div class="work-body">
+            <h3>OpenClaw SUPERAGENT v4 — Hermes integration</h3>
+            <p>22-skill agent bundle with governance layer: Spend Governor (USD cap, slippage, gas-spike HALT), FROZEN_PATHS (immutable critical files), MEV protection, skill integrity verification. Mirror+Guardrails pattern applied to keep the operational rails without the persona override.</p>
+          </div>
+          <div class="work-tags">
+            <span class="work-tag">governance</span>
+            <span class="work-tag">safety</span>
+            <span class="work-tag">mirror+guardrails</span>
+          </div>
+          <div class="work-year">2026 · live</div>
+        </li>
+
+        <li class="work-item reveal">
+          <div class="work-num">//02</div>
+          <div class="work-body">
+            <h3>X OAuth 2.0 PKCE — native CLI</h3>
+            <p>Python CLI for X v2 API with auto-refreshing tokens. Survives xurl binary break on Termux. Cascade fallback across providers. Termux-native, zero external dependencies.</p>
+          </div>
+          <div class="work-tags">
+            <span class="work-tag">oauth</span>
+            <span class="work-tag">pkce</span>
+            <span class="work-tag">cascade</span>
+          </div>
+          <div class="work-year">2026 · live</div>
+        </li>
+
+        <li class="work-item reveal">
+          <div class="work-num">//03</div>
+          <div class="work-body">
+            <h3>EVM HD wallet factory — pure-Python</h3>
+            <p>BIP-39/32/44 + EIP-55. Solves Termux's missing crypto libs (no web3, no eth-account, no pynacl). Self-contained: keccak256 + secp256k1 implemented in-stdlib. Fresh single + batch farm modes.</p>
+          </div>
+          <div class="work-tags">
+            <span class="work-tag">bip-39</span>
+            <span class="work-tag">eip-55</span>
+            <span class="work-tag">pure-python</span>
+          </div>
+          <div class="work-year">2026 · live</div>
+        </li>
+
+        <li class="work-item reveal">
+          <div class="work-num">//04</div>
+          <div class="work-body">
+            <h3>Hermes aggressive operator profile</h3>
+            <p>Custom profile with auto_confirm default, expanded permissiveness for high-volume Web3 ops, audit-logged. Same hard stops as default — just faster loop. Isolated memory, isolated SOUL.</p>
+          </div>
+          <div class="work-tags">
+            <span class="work-tag">profile</span>
+            <span class="work-tag">isolated</span>
+            <span class="work-tag">hard-stops</span>
+          </div>
+          <div class="work-year">2026 · live</div>
+        </li>
+
+        <li class="work-item reveal">
+          <div class="work-num">//05</div>
+          <div class="work-body">
+            <h3>quietdev — personal portfolio site</h3>
+            <p>Single-file HTML portfolio. Editorial luxe aesthetic: dark warm bg + Fraunces serif headlines + brass accent. Five sections, clickable social reach, no build step. Drop-in deploy to any static host (Vercel, Netlify, Cloudflare Pages, GitHub Pages).</p>
+          </div>
+          <div class="work-tags">
+            <span class="work-tag">html</span>
+            <span class="work-tag">css</span>
+            <span class="work-tag">editorial</span>
+            <span class="work-tag">no-build</span>
+          </div>
+          <div class="work-year">2026 · live</div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container-narrow">
+      <div class="sec-eyebrow">03 — Stack</div>
+      <h2 class="sec-title">What I work <em>with</em>.</h2>
+
+      <ul class="stack-list">
+        <li class="stack-item reveal">
+          <div class="stack-name">Web3 / on-chain</div>
+          <div class="stack-detail">ethers v6 · web3.py · viem · BIP-39 HD wallets · MEV-protected swaps (Flashbots) · multi-wallet orchestration · 1inch / LI.FI / Jupiter · Foundry · CREATE2</div>
+        </li>
+        <li class="stack-item reveal">
+          <div class="stack-name">Automation / infra</div>
+          <div class="stack-detail">Termux · proot-debian · Camoufox / Chromium · Playwright · Xvfb · Telegram / Discord bots · event-driven IFTTT · SQLite + compounding memory</div>
+        </li>
+        <li class="stack-item reveal">
+          <div class="stack-name">Agent / safety</div>
+          <div class="stack-detail">Hermes Agent (custom skills) · OpenClaw v3.1 + v4.0 · Spend Governor · FROZEN_PATHS · Skill Integrity (SHA-256+Ed25519) · x4 Self-Improve (FROZEN-aware, audit-logged)</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reach">
+    <div class="container-narrow">
+      <div class="sec-eyebrow">04 — Reach</div>
+      <h2 class="sec-title">Where to <em>find</em> me.</h2>
+
+      <ul class="reach-list">
+        <li class="reach-item reveal">
+          <a class="reach-link" href="https://quitedev.my.id" target="_blank" rel="noopener">
+            <span class="reach-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></span>
+            <div class="reach-meta">
+              <div class="reach-label">Site</div>
+              <div class="reach-value">quitedev.my.id</div>
+            </div>
+            <span class="reach-arrow">→</span>
+          </a>
+        </li>
+
+        <li class="reach-item reveal">
+          <a class="reach-link" href="https://x.com/quitedevv" target="_blank" rel="noopener">
+            <span class="reach-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+            <div class="reach-meta">
+              <div class="reach-label">X</div>
+              <div class="reach-value">@quitedevv</div>
+            </div>
+            <span class="reach-arrow">→</span>
+          </a>
+        </li>
+
+        <li class="reach-item reveal">
+          <a class="reach-link" href="https://t.me/quitedevv" target="_blank" rel="noopener">
+            <span class="reach-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.798-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
+            <div class="reach-meta">
+              <div class="reach-label">Telegram</div>
+              <div class="reach-value">@quitedevv</div>
+            </div>
+            <span class="reach-arrow">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="closing" style="border-top: none;">
+    <div class="container-narrow">
+      <p class="closing-quote reveal">If it's not auditable, it's not operationally honest.</p>
+      <p class="closing-attr reveal">— Operating principle</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer">
+        <div class="footer-meta">© 2026 · <a href="https://quitedev.my.id" target="_blank" rel="noopener"><em>quitedev.my.id</em></a> · all output reproducible</div>
+        <div class="footer-meta">no build step · no js framework</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

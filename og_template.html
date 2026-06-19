@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #161310;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #f0e8d8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 110px;
+    position: relative;
+  }
+  .corner-tl {
+    position: absolute; top: 40px; left: 60px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: #6e6452; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .corner-tr {
+    position: absolute; top: 40px; right: 60px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    color: #6e6452; letter-spacing: 0.1em;
+  }
+  .wordmark {
+    font-family: 'Georgia', serif;
+    font-size: 108px; font-weight: 400; line-height: 0.95;
+    letter-spacing: -0.025em; color: #f0e8d8;
+    margin-bottom: 28px;
+  }
+  .wordmark em {
+    color: #c9a35e; font-style: italic; font-weight: 300;
+  }
+  .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px; color: #b8aa94; letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+  .tagline em { color: #c9a35e; font-style: italic; }
+  .rule {
+    width: 80px; height: 1px; background: #c9a35e;
+    margin: 28px 0 18px 0;
+  }
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: #6e6452;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .glyph {
+    position: absolute; bottom: 40px; right: 60px;
+    color: #c9a35e; opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+  <div class="corner-tl">quitedev.my.id</div>
+  <div class="corner-tr">2026 · live</div>
+
+  <div class="wordmark">quietdev<em>.</em></div>
+  <div class="tagline">Web3, by hand. <em>Quietly.</em></div>
+
+  <div class="rule"></div>
+  <div class="meta">airdrop ops · security audit · custom agent setup</div>
+
+  <svg class="glyph" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="24" cy="24" r="20"/>
+    <path d="M14 24h20M24 14v20"/>
+  </svg>
+</body>
+</html>
